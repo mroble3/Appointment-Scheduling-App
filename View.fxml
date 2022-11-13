@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<TabPane fx:id="tabPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ViewController">
+    <Tab fx:id="apptTab" text="Appointments">
+        <AnchorPane minHeight="0.0" minWidth="0.0">
+            <TableView fx:id="appointmentTable" layoutX="50.0" layoutY="50.0" prefHeight="350.0" prefWidth="900.0">
+                <columns>
+                    <TableColumn fx:id="apptIdColumn" editable="false" prefWidth="70.0" text="Appt. ID" />
+                    <TableColumn fx:id="apptTitleColumn" editable="false" prefWidth="87.0" text="Title" />
+               <TableColumn fx:id="apptDescriptionColumn" editable="false" prefWidth="102.4000244140625" text="Description" />
+               <TableColumn fx:id="apptLocationColumn" editable="false" prefWidth="94.39990234375" text="Location" />
+               <TableColumn fx:id="apptContactColumn" editable="false" prefWidth="89.5999755859375" text="Contact" />
+               <TableColumn fx:id="apptTypeColumn" editable="false" prefWidth="83.199951171875" text="Type" />
+               <TableColumn fx:id="apptStartColumn" editable="false" prefWidth="124.0" text="Start" />
+               <TableColumn fx:id="apptEndColumn" editable="false" prefWidth="123.199951171875" text="End" />
+               <TableColumn fx:id="apptCustomerCol" editable="false" prefWidth="66.4000244140625" text="Customer" />
+               <TableColumn fx:id="apptUserColumn" editable="false" prefWidth="57.5999755859375" text="User ID" />
+                </columns>
+            </TableView>
+            <RadioButton fx:id="aViewAllRadio" layoutX="468.0" layoutY="20.0" mnemonicParsing="false" selected="true" text="View All">
+                <toggleGroup>
+                    <ToggleGroup fx:id="aViewByToggle" />
+                </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="aViewMonthRadio" layoutX="804.0" layoutY="20.0" mnemonicParsing="false" text="View By Current Month" toggleGroup="$aViewByToggle" />
+            <RadioButton fx:id="aViewWeekRadio" layoutX="600.0" layoutY="20.0" mnemonicParsing="false" text="View By Current Week" toggleGroup="$aViewByToggle" />
+            <Label layoutX="50.0" layoutY="19.0" text="View Scheduled Appointments" underline="true">
+                <font>
+                    <Font size="18.0" />
+                </font>
+            </Label>
+            <Button fx:id="aScheduleButton" layoutX="50.0" layoutY="420.0" mnemonicParsing="false" onAction="#onAddAppointment" text="Schedule New Appointment" />
+            <Button fx:id="aUpdateButton" layoutX="677.0" layoutY="420.0" mnemonicParsing="false" onAction="#onUpdateAppointment" text="Update Appointment" />
+            <Button fx:id="aCancelButton" layoutX="826.0" layoutY="420.0" mnemonicParsing="false" onAction="#onCancelAppointment" text="Cancel Appointment" />
+        </AnchorPane>
+    </Tab>
+    <Tab fx:id="customerTab" text="Customers">
+        <AnchorPane minHeight="0.0" minWidth="0.0">
+            <TableView fx:id="customerTable" layoutX="50.0" layoutY="50.0" prefHeight="350.0" prefWidth="900.0">
+                <columns>
+                    <TableColumn fx:id="customerIdColumn" editable="false" prefWidth="64.800048828125" text="ID" />
+                    <TableColumn fx:id="customerNameColumn" editable="false" prefWidth="135.199951171875" text="Name" />
+               <TableColumn fx:id="customerAddressColumn" editable="false" prefWidth="200.7999267578125" text="Street Address" />
+               <TableColumn fx:id="customerPostalColumn" editable="false" prefWidth="95.9998779296875" text="Postal Code" />
+               <TableColumn fx:id="customerDivisionColumn" editable="false" prefWidth="122.39990234375" text="Division" />
+               <TableColumn fx:id="customerCountryColumn" editable="false" prefWidth="116.7999267578125" text="Country" />
+               <TableColumn fx:id="customerPhoneColumn" editable="false" prefWidth="162.4000244140625" text="Phone Number" />
+                </columns>
+            </TableView>
+            <Button fx:id="cAddButton" layoutX="50.0" layoutY="420.0" mnemonicParsing="false" onAction="#onAddCustomer" text="Register New Customer" />
+            <Button fx:id="cDeleteButton" layoutX="836.0" layoutY="420.0" mnemonicParsing="false" onAction="#onDeleteCustomer" text="Delete Customer" />
+            <Button fx:id="cUpdateButton" layoutX="706.0" layoutY="420.0" mnemonicParsing="false" onAction="#onUpdateCustomer" text="Update Customer" />
+            <Label layoutX="50.0" layoutY="19.0" text="Register Customer" underline="true">
+                <font>
+                    <Font size="18.0" />
+                </font>
+            </Label>
+        </AnchorPane>
+    </Tab>
+    <Tab fx:id="reportTab" text="Reports">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <Label layoutX="40.0" layoutY="43.0" text="Total appointments by month and Appt. type " underline="true">
+                <font>
+                    <Font size="14.0" />
+                </font>
+            </Label>
+            <Label layoutX="74.0" layoutY="75.0" text="Type" />
+            <ComboBox fx:id="tmTypeCombo" layoutX="106.0" layoutY="71.0" prefWidth="150.0" promptText="Select type" visibleRowCount="6" />
+            <Label layoutX="64.0" layoutY="111.0" text="Month" />
+            <ComboBox fx:id="tmMonthCombo" layoutX="106.0" layoutY="107.0" prefWidth="150.0" promptText="Select month" visibleRowCount="6" />
+            <Button fx:id="tmCalcButton" layoutX="299.0" layoutY="89.0" mnemonicParsing="false" text="Calculate" />
+            <Label fx:id="tmCalcLabel" layoutX="106.0" layoutY="151.0">
+                <font>
+                    <Font name="System Bold" size="12.0" />
+                </font>
+            </Label>
+            <Label layoutX="37.0" layoutY="240.0">
+                <font>
+                    <Font name="System Bold" size="14.0" />
+                </font>
+            </Label>
+            <Label layoutX="429.0" layoutY="25.0" text="Reports" underline="true">
+                <font>
+                    <Font name="System Bold" size="14.0" />
+                </font>
+            </Label>
+            <Label layoutX="607.0" layoutY="75.0" text="User" />
+            <ComboBox fx:id="acCombo" layoutX="305.0" layoutY="237.0" prefWidth="150.0" promptText="Select contact" visibleRowCount="5" />
+            <TableView fx:id="apptContactTable" layoutX="35.0" layoutY="277.0" prefHeight="180.0" prefWidth="930.0">
+                <columns>
+                    <TableColumn fx:id="apptContactIdColumn" editable="false" prefWidth="44.00006103515625" text="ID" />
+                    <TableColumn fx:id="apptContactTitleColumn" editable="false" prefWidth="112.0" text="Title" />
+                    <TableColumn fx:id="apptContactDescColumn" editable="false" prefWidth="132.0" text="Description" />
+                    <TableColumn fx:id="appointmentContactLocColumn" editable="false" prefWidth="100.800048828125" text="Location" />
+                    <TableColumn fx:id="acContactColumn" editable="false" prefWidth="80.0001220703125" text="Contact" />
+                    <TableColumn fx:id="apptContactTypeColumn" editable="false" prefWidth="100.7999267578125" text="Type" />
+                    <TableColumn fx:id="apptContactStartColumn" editable="false" prefWidth="117.5999755859375" text="Start" />
+                    <TableColumn fx:id="apptContactEndColumn" editable="false" prefWidth="117.5999755859375" text="End" />
+                    <TableColumn fx:id="apptContactCustomerColumn" editable="false" prefWidth="69.5999755859375" text="Customer" />
+                    <TableColumn fx:id="apptContactUserColumn" editable="false" prefWidth="52.80002441406248" text="User ID" />
+                </columns>
+            </TableView>
+            <Label layoutX="580.0" layoutY="111.0" text="Customer" />
+            <ComboBox fx:id="ucUserCombo" layoutX="640.0" layoutY="71.0" prefWidth="150.0" promptText="Select user" visibleRowCount="6" />
+            <ComboBox fx:id="ucCustCombo" layoutX="640.0" layoutY="107.0" prefWidth="150.0" promptText="Select customer" visibleRowCount="6" />
+            <Button fx:id="ucCalcButton" layoutX="835.0" layoutY="89.0" mnemonicParsing="false" text="Calculate" />
+            <Label fx:id="ucCalcLabel" layoutX="640.0" layoutY="151.0">
+                <font>
+                    <Font name="System Bold" size="12.0" />
+                </font>
+            </Label>
+            <Label layoutX="37.0" layoutY="45.0">
+                <font>
+                    <Font size="10.0" />
+                </font>
+            </Label>
+         <Label layoutX="580.0" layoutY="43.0" text="Total appointments by User " underline="true">
+            <font>
+               <Font size="14.0" />
+            </font>
+         </Label>
+         <Label layoutX="46.0" layoutY="230.0" text="View Appointment Schedule by Contact" underline="true">
+            <font>
+               <Font size="14.0" />
+            </font>
+         </Label>
+        </AnchorPane>
+    </Tab>
+</TabPane>
